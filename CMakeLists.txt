@@ -6,7 +6,6 @@ find_package(catkin
 		roscpp 
 		std_msgs 
 		sensor_msgs 
-		self_test
         camera_info_manager)
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs roslib cv_bridge image_transport)
 find_package(OpenCV REQUIRED)
@@ -24,7 +23,6 @@ catkin_package(
 		roscpp 
 		std_msgs 
 		sensor_msgs
-		self_test
         camera_info_manager
 )
 

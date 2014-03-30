@@ -40,7 +40,6 @@
 #include <sensor_msgs/fill_image.h>
 #include <sensor_msgs/CompressedImage.h>
 #include <usb_cam/usb_cam.h>
-#include <self_test/self_test.h>
 
 class RawUsbCamNode
 {
