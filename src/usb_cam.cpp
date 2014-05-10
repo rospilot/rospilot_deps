@@ -831,19 +831,21 @@ static void open_device(void)
 
   if (-1==stat(camera_dev, &st)) {
     ROS_ERROR("Cannot identify '%s': %d, %s\n", camera_dev, errno, strerror(errno));
-    exit(EXIT_FAILURE);
+    fd = -1;
+    return;
   }
 
   if (!S_ISCHR (st.st_mode)) {
     ROS_ERROR("%s is no device\n", camera_dev);
-    exit(EXIT_FAILURE);
+    fd = -1;
+    return;
   }
 
   fd = open(camera_dev, O_RDWR /* required */|O_NONBLOCK, 0);
 
   if (-1==fd) {
     ROS_ERROR("Cannot open '%s': %d, %s\n", camera_dev, errno, strerror(errno));
-    exit(EXIT_FAILURE);
+    return;
   }
 }
 
@@ -866,12 +868,13 @@ usb_cam_camera_image_t *usb_cam_camera_start(
   }
   else {
     ROS_ERROR("Unknown pixelformat.\n");
-    exit(EXIT_FAILURE);
+    return NULL;
   }
 
-  freopen("/dev/null", "w", stderr);
-
   open_device();
+  if (fd == -1) {
+      return NULL;
+  }
   init_device(image_width, image_height, framerate);
   start_capturing();
 

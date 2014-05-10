@@ -98,12 +98,18 @@ public:
       return;
     }
 
-    camera_image_ = usb_cam_camera_start(video_device_name_.c_str(),
+    camera_image_ = NULL;
+    while (!ros::isShuttingDown() && camera_image_ == NULL) {
+        camera_image_ = usb_cam_camera_start(video_device_name_.c_str(),
                                          io_method,
                                          PIXEL_FORMAT_MJPEG,
                                          image_width_,
                                          image_height_,
                                          framerate_);
+      if (camera_image_ == NULL) {
+          usleep(1000000);
+      }
+    }
 
     if(autofocus_) {
       usb_cam_camera_set_auto_focus(1);
