@@ -52,6 +52,7 @@ public:
   int image_width_,image_height_, framerate_;
   std::string pixel_format_name_;
   bool autofocus_;
+  usb_cam_io_method io_method_;
 
   std::string camera_name_;
 
@@ -85,13 +86,12 @@ public:
     ROS_INFO("usb_cam image_height set to [%d]\n", image_height_);
     ROS_INFO("usb_cam auto_focus set to [%d]\n", autofocus_);
 
-    usb_cam_io_method io_method;
     if(io_method_name_ == "mmap")
-      io_method = IO_METHOD_MMAP;
+      io_method_ = IO_METHOD_MMAP;
     else if(io_method_name_ == "read")
-      io_method = IO_METHOD_READ;
+      io_method_ = IO_METHOD_READ;
     else if(io_method_name_ == "userptr")
-      io_method = IO_METHOD_USERPTR;
+      io_method_ = IO_METHOD_USERPTR;
     else {
       ROS_FATAL("Unknown io method.");
       node_.shutdown();
@@ -101,13 +101,15 @@ public:
     camera_image_ = NULL;
     while (!ros::isShuttingDown() && camera_image_ == NULL) {
         camera_image_ = usb_cam_camera_start(video_device_name_.c_str(),
-                                         io_method,
+                                         io_method_,
                                          PIXEL_FORMAT_MJPEG,
                                          image_width_,
                                          image_height_,
                                          framerate_);
       if (camera_image_ == NULL) {
           usleep(1000000);
+          // Fetch the video device again, in case it changed
+          node_.param("video_device", video_device_name_, std::string("/dev/video6"));
       }
     }
 
@@ -153,6 +155,29 @@ public:
       } else {
         ROS_ERROR("couldn't take image.");
         usleep(1000000);
+      }
+      std::string device_name;
+      node_.getParam("video_device", device_name);
+      if (device_name != video_device_name_) {
+          usb_cam_camera_shutdown();
+          camera_image_ = usb_cam_camera_start(device_name.c_str(),
+                                         io_method_,
+                                         PIXEL_FORMAT_MJPEG,
+                                         image_width_,
+                                         image_height_,
+                                         framerate_);
+          if (camera_image_ == NULL) {
+              usleep(1000000);
+              camera_image_ = usb_cam_camera_start(video_device_name_.c_str(),
+                                             io_method_,
+                                             PIXEL_FORMAT_MJPEG,
+                                             image_width_,
+                                             image_height_,
+                                             framerate_);
+          }
+          else {
+              video_device_name_ = device_name;
+          }
       }
     }
     return true;
