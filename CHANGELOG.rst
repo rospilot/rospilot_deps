@@ -2,8 +2,8 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2014-06-01)
+------------------
 * Allow changing camera device path while cam node is running
 * Improve error handling in raw_usb_cam_node
   Print an error message and retry, instead of exiting the process
