@@ -7,10 +7,12 @@ find_package(catkin
 		std_msgs 
 		sensor_msgs 
         camera_info_manager)
+find_package(PkgConfig REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs roslib cv_bridge image_transport)
 find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread)
-
+pkg_check_modules(libavcodec REQUIRED libavcodec)
+pkg_check_modules(libswscale REQUIRED libswscale)
 
 set(ROS_BUILD_TYPE Release)
 
@@ -28,14 +30,16 @@ catkin_package(
 
 include_directories(include
                     ${catkin_INCLUDE_DIRS}
+                    ${libavcodec_INCLUDE_DIRS}
+                    ${libswscale_INCLUDE_DIRS}
 )
 add_library(rospilot_deps
 	src/usb_cam.cpp
 )
-target_link_libraries(rospilot_deps avcodec swscale ${catkin_LIBRARIES})
+target_link_libraries(rospilot_deps ${libavcodec_LIBRARIES} ${libswscale_LIBRARIES} ${catkin_LIBRARIES})
 
 add_executable(raw_usb_cam_node nodes/raw_usb_cam_node.cpp)
-target_link_libraries(raw_usb_cam_node rospilot_deps avcodec swscale ${catkin_LIBRARIES})
+target_link_libraries(raw_usb_cam_node rospilot_deps ${libavcodec_LIBRARIES} ${libswscale_LIBRARIES} ${catkin_LIBRARIES})
 add_executable(raw_mjpeg_server src/raw_mjpeg_server.cpp)
 target_link_libraries(raw_mjpeg_server
   ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${OpenCV_LIBS}
