@@ -2,8 +2,8 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2014-06-10)
+------------------
 * Use PkgConfig to find avcodec and swscale
 * Contributors: Christopher Berner, Scott K Logan
 
