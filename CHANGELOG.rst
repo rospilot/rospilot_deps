@@ -2,6 +2,11 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use PkgConfig to find avcodec and swscale
+* Contributors: Christopher Berner, Scott K Logan
+
 0.0.1 (2014-06-01)
 ------------------
 * Allow changing camera device path while cam node is running
