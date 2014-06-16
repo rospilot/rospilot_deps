@@ -2,6 +2,11 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Include source for pymavlink
+* Contributors: Christopher Berner
+
 0.0.2 (2014-06-10)
 ------------------
 * Use PkgConfig to find avcodec and swscale
