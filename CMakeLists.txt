@@ -28,6 +28,8 @@ catkin_package(
         camera_info_manager
 )
 
+catkin_python_setup()
+
 include_directories(include
                     ${catkin_INCLUDE_DIRS}
                     ${libavcodec_INCLUDE_DIRS}
