@@ -5,7 +5,14 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=['pymavlink'],
+    packages= ['pymavlink',
+               'pymavlink.generator',
+               'pymavlink.generator.lib',
+               'pymavlink.generator.lib.genxmlif',
+               'pymavlink.generator.lib.minixsv',
+               'pymavlink.dialects',
+               'pymavlink.dialects.v09',
+               'pymavlink.dialects.v10'],
     package_dir={'': 'src'},
     requires=['std_msgs', 'rospy']
 )
