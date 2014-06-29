@@ -2,8 +2,8 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2014-06-28)
+------------------
 * Fix setup.py to export all pymavlink packages
 * Contributors: Christopher Berner
 
