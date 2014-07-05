@@ -2,6 +2,12 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add missing files
+* Make gitignore less aggressive
+* Contributors: Christopher Berner
+
 0.0.4 (2014-06-28)
 ------------------
 * Fix setup.py to export all pymavlink packages
