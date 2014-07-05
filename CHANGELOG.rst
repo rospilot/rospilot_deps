@@ -2,8 +2,8 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2014-07-05)
+------------------
 * Add missing files
 * Make gitignore less aggressive
 * Contributors: Christopher Berner

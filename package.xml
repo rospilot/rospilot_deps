@@ -1,6 +1,6 @@
 <package>
   <name>rospilot_deps</name>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <description>Forked dependencies of Rospilot</description>
 
   <license>BSD</license>
