@@ -61,7 +61,7 @@ extern "C" {
 
 #include <ros/ros.h>
 
-#include <usb_cam/usb_cam.h>
+#include <rospilot_deps/usb_cam.h>
 
 #define CLEAR(x) memset (&(x), 0, sizeof (x))
 

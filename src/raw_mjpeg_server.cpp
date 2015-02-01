@@ -34,7 +34,7 @@
  *
  *********************************************************************/
 
-#include <mjpeg_server/raw_mjpeg_server.h>
+#include <rospilot_deps/raw_mjpeg_server.h>
 #include <sys/ioctl.h>
 #include <errno.h>
 #include <signal.h>

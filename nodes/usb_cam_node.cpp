@@ -38,7 +38,7 @@
 
 #include <ros/ros.h>
 #include <sensor_msgs/fill_image.h>
-#include <usb_cam/usb_cam.h>
+#include <rospilot_deps/usb_cam.h>
 #include <image_transport/image_transport.h>
 
 #include <camera_info_manager/camera_info_manager.h>
