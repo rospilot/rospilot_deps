@@ -38,6 +38,10 @@ include_directories(include
 )
 add_library(rospilot_deps
 	src/usb_cam.cpp
+    src/v4l2-mfc-encoder/mfc.c
+    src/v4l2-mfc-encoder/func_dev.c
+    src/v4l2-mfc-encoder/v4l_dev.c
+    src/v4l2-mfc-encoder/io_dev.c
 )
 target_link_libraries(rospilot_deps ${libavcodec_LIBRARIES} ${libswscale_LIBRARIES} ${catkin_LIBRARIES})
 
