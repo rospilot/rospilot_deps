@@ -2,6 +2,11 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add Exynos MFC library
+* Contributors: Christopher Berner
+
 0.0.6 (2015-02-01)
 ------------------
 * Fix library and header exports
