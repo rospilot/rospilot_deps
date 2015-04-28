@@ -2,8 +2,8 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.0 (2015-04-27)
+------------------
 * Switch to new constant names for libavconv
 * Contributors: Christopher Berner
 
