@@ -2,6 +2,11 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Switch to new constant names for libavconv
+* Contributors: Christopher Berner
+
 0.0.7 (2015-03-01)
 ------------------
 * Add Exynos MFC library
