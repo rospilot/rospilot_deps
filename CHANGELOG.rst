@@ -2,6 +2,11 @@
 Changelog for package rospilot_deps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix deprecation warnings
+* Contributors: Christopher Berner
+
 0.1.0 (2015-04-27)
 ------------------
 * Switch to new constant names for libavconv
