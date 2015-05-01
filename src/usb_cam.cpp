@@ -57,7 +57,15 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libswscale/swscale.h>
 #include <libavutil/common.h>
+#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,28,1)
+#include <libavutil/frame.h>
+#error LIBAVCODEC_VERSION_INT
+#endif
 }
+
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(55,28,1)
+#define av_frame_alloc  avcodec_alloc_frame
+#endif
 
 #include <ros/ros.h>
 
@@ -295,8 +303,8 @@ static int init_mjpeg_decoder(int image_width, int image_height)
   }
 
   avcodec_context = avcodec_alloc_context3(avcodec);
-  avframe_camera = avcodec_alloc_frame();
-  avframe_rgb = avcodec_alloc_frame();
+  avframe_camera = av_frame_alloc();
+  avframe_rgb = av_frame_alloc();
 
   avpicture_alloc((AVPicture *)avframe_rgb, PIX_FMT_RGB24, image_width, image_height);
 
