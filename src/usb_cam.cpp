@@ -59,7 +59,6 @@ extern "C" {
 #include <libavutil/common.h>
 #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,28,1)
 #include <libavutil/frame.h>
-#error LIBAVCODEC_VERSION_INT
 #endif
 }
 
